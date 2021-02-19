@@ -1,0 +1,219 @@
+body {
+  margin-left: 50px;
+  margin-right: 50px;
+  font-family: sans-serif;
+}
+h5 a {
+  text-decoration: overline #f5bd0b;
+  color: black;
+  font-weight: bold;
+}
+
+.searching {
+  float: right;
+  margin-top: 20px;
+}
+#logo-col {
+  color: #2d8cff;
+}
+.shake {
+  max-width: 40px;
+  max-height: 40px;
+  margin-top: -15px;
+}
+h1 {
+  border: solid 1px saddlebrown;
+  background-color: black;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 4px 4px saddlebrown;
+}
+h1:hover {
+  background-color: rgba(139, 69, 19, 0.05);
+  transition: all 1s ease;
+}
+em {
+  color: #f5bd0b;
+}
+.container-wrap {
+  background-color: #eaeaea;
+}
+.topnav {
+  background-color: white;
+
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: white;
+  color: black;
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}
+.navbar-wrap {
+  margin-top: 40px;
+}
+.topnav-right a {
+  font-weight: bold;
+  color: saddlebrown;
+  text-decoration: underline;
+}
+.ad-container {
+  margin-bottom: 30px;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaLvFiG4zrdLWM32e9ZlTxSKd4crrcVuKYmCwPcYHzj_g8gru7bzpqPm_New&usqp=CAc);
+}
+
+/* Make the image responsive */
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.card .btn {
+  position: absolute;
+  top: 90%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #2d8cff;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.card .btn:hover {
+  background-color: black;
+}
+#col-green:hover {
+  background-color: rgba(3, 109, 3, 0.4);
+  transition: all 1s ease;
+}
+#col-orange:hover {
+  background-color: rgba(255, 69, 0, 0.4);
+  transition: all 1s ease;
+}
+#col-yellow:hover {
+  background-color: rgba(255, 255, 0, 0.4);
+  transition: all 1s ease;
+}
+.card-footer {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+.container-fluid {
+  margin-top: 60px;
+}
+
+/* Carousel CSS */
+* {
+  box-sizing: border-box;
+}
+.card-body {
+  margin-bottom: 20px;
+}
+
+.carousel {
+  background: #eaeaea;
+}
+
+.carousel-cell {
+  width: 70%;
+  height: 200px;
+  /* flex-box, center image in cell */
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.carousel-cell img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  /* dim unselected */
+  opacity: 0.7;
+  -webkit-transform: scale(0.85);
+  transform: scale(0.85);
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s, transform 0.3s,
+    -webkit-filter 0.3s, filter 0.3s;
+  transition: opacity 0.3s, transform 0.3s, filter 0.3s;
+}
+
+/* brighten selected image */
+.carousel-cell.is-selected img {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-filter: none;
+  filter: none;
+}
+
+@media screen and (min-width: 768px) {
+  .carousel-cell {
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .carousel-cell {
+    width: 60%;
+  }
+}
+
+/* buttons, no circle */
+.flickity-prev-next-button {
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  opacity: 0.6;
+}
+.flickity-prev-next-button:hover {
+  background: transparent;
+  opacity: 1;
+}
+/* arrow color */
+.flickity-prev-next-button .arrow {
+  fill: #2d8cff;
+}
+/*Footer */
+#form-border {
+  border: 1px solid #f5bd0b;
+  padding: 4px;
+  border-radius: 4px;
+}
+.deal {
+  border: 1px solid #f5bd0b;
+  padding: 4px;
+  border-radius: 4px;
+}
