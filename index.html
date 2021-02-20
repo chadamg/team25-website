@@ -50,20 +50,24 @@
           <a href="#">Home</a>
           <a href="#"><i class="far fa-user-circle"></i> My Account</a>
           
-          <button
-            class="btn btn-outline-secondary dropdown-toggle" id="carousel-button"
-            type="button"
-            id="dropdownMenuButton1"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-           <i class="fas fa-shopping-cart"></i> Your Cart
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">MyProtein Shake Bottle</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+          <div class="dropdown">
+              <button
+              class="btn btn-outline-secondary dropdown-toggle" id="carousel-button"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              onclick="myfunction()"
+            >
+             <i class="fas fa-shopping-cart"></i> Your Cart
+              </button>
+            <div class="dropdown-menu" id="myDropdown" aria-labelledby="dropdownMenuButton1">
+              <a class="dropdown-item" href="#">MyProtein Shake Bottle</a>
+              <a class="dropdown-item" href="#">Protein Blender</a>
+              <a class="dropdown-item" href="#">Vegan Vanilla Protein</a>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -197,5 +201,10 @@
     </div>
     </div>
       </footer>
+      <script>
+        function myfunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+}
+      </script>
   </body>
 </html>

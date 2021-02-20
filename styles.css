@@ -40,15 +40,15 @@ em {
 }
 .topnav {
   background-color: white;
-
   overflow: hidden;
+  padding-bottom: 17px;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
   color: black;
-  text-align: center;
+  text-align: left;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
@@ -69,6 +69,7 @@ em {
 /* Right-aligned section inside the top navigation */
 .topnav-right {
   float: right;
+  position: relative;
 }
 .navbar-wrap {
   margin-top: 40px;
@@ -78,6 +79,11 @@ em {
   color: saddlebrown;
   text-decoration: underline;
 }
+
+.topnav-right a:hover {
+  background-color: rgb(108 117 125 / 25%);
+}
+
 .ad-container {
   margin-bottom: 30px;
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaLvFiG4zrdLWM32e9ZlTxSKd4crrcVuKYmCwPcYHzj_g8gru7bzpqPm_New&usqp=CAc);
@@ -216,4 +222,34 @@ em {
   border: 1px solid #f5bd0b;
   padding: 4px;
   border-radius: 4px;
+}
+
+.show {
+  display: block;
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  border: none;
+  padding: 8px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  right: 1px;
+  top: 1px;
+  max-width: 135px;
+}
+
+.dropdown-item {
+  white-space: normal;
+}
+
+#carousel-button {
+  padding: 14px;
+  border: none;
+}
+
+#carousel-button:focus {
+  box-shadow: 0 0 0 0.05rem rgb(108 117 125 / 50%);
 }
