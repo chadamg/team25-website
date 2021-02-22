@@ -1,18 +1,16 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, session
 
-web_site = Flask(__name__)
+app = Flask(__name__)
+app.secret_key = "secret"
 
-@web_site.route('/')
+@app.route('/')
 def index():
 	return render_template('index.html')
 
-@web_site.route('/user/', methods=['POST', 'GET'], defaults={'email': None, 'password': None})
-@web_site.route('/user/<email>')
-@web_site.route('/user/<password>')
-def login(email, password):
-      if not email and not password:
-        email = request.args.get('email')
-        password = request.args.get('password')
+'''@app.route('/user/', methods=['POST', 'GET'], defaults={'email': None, 'password': None})
+def user(email, password):
+      email = request.args.get('email')
+      password = request.args.get('password')
       
       if not email or not password:
         return \
@@ -21,8 +19,18 @@ def login(email, password):
 			    "<button>Home</button>\n" + \
 		      "</a>\n"
       
-      return render_template('user.html', email=email)
+      return render_template('user.html', email=email)'''
+
+@app.route('/login/', methods=['POST', 'GET'])
+def login():
+	if request.method == 'POST':
+		username = request.form['username']
+		session['username'] = username
+		return redirect(url_for('index'))
+	return render_template('login.html')  # executed on GET
 
 
-#only used for repl.it:
-#web_site.run(host='0.0.0.0', port=8080)
+@app.route('/logout/', methods=['GET'])
+def logout():
+	session.pop('username')
+	return redirect(url_for('index'))

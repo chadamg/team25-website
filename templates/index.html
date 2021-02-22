@@ -1,212 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🥤urbanShakes🥤</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/baeb783242.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="/static/styles.css" />
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.js"
-      i></script>
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
-<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
-  </head>
-  <body>
-    <div class="container-wrap">
-      <div class="searching">
-        <form action="search">
-          <span
-            ><i class="fas fa-search"></i>
-            <input type="text" placeholder="vanilla prot..." autofocus="on"
-          /></span>
-        </form>
-      </div>
-    </div>
-    <br />
-    
-    <!--Navbar-->
-    <div class="navbar-wrap">
-      <div class="topnav">
-       <a class="active" href="#home">
-          <h1><span id="logo-col">urban</span><em>Shakes</em><img  
-           src="data:image/svg+xml;base64,PHN2ZyBpZD0iQ2FwYV8xIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGc+PHBhdGggZD0ibTM4My41MjYgMTkyLjQ5MWMtMi44MzMtMi45ODctNi43NjktNC42NzktMTAuODg1LTQuNjc5aC0yMzMuMjgxYy00LjExNyAwLTguMDUyIDEuNjkyLTEwLjg4NSA0LjY3OS0yLjgzMiAyLjk4Ny00LjMxMyA3LjAwNy00LjA5NCAxMS4xMThsMTQuOTE4IDI4MC41NDNjLjg3OCAxNS42MTYgMTMuODE2IDI3Ljg0OCAyOS40NTcgMjcuODQ4aDE3NC40ODhjMTUuNjQxIDAgMjguNTc5LTEyLjIzMiAyOS40NTktMjcuODk0bDE0LjkxNi0yODAuNDk4Yy4yMTktNC4xMS0xLjI2MS04LjEzLTQuMDkzLTExLjExN3oiIGZpbGw9IiNmZmY1ZjUiLz48cGF0aCBkPSJtMzgzLjUyNiAxOTIuNDkxYy0yLjgzMy0yLjk4Ny02Ljc2OS00LjY3OS0xMC44ODUtNC42NzloLTExNi42NDF2MzI0LjE4OGg4Ny4yNDRjMTUuNjQxIDAgMjguNTc5LTEyLjIzMiAyOS40NTktMjcuODk0bDE0LjkxNi0yODAuNDk4Yy4yMTktNC4xMS0xLjI2MS04LjEzLTQuMDkzLTExLjExN3oiIGZpbGw9IiNmMmU4ZTQiLz48cGF0aCBkPSJtMTMwLjY0NCAzMjEuMzg5IDguNjU1IDE2Mi43NjNjLjg3OCAxNS42MTYgMTMuODE2IDI3Ljg0OCAyOS40NTcgMjcuODQ4aDE3NC40ODhjMTUuNjQxIDAgMjguNTc5LTEyLjIzMiAyOS40NTktMjcuODk0bDguNjUzLTE2Mi43MTd6IiBmaWxsPSIjYjM1ZjQ5Ii8+PHBhdGggZD0ibTM0My4yNDQgNTEyYzE1LjY0MSAwIDI4LjU3OS0xMi4yMzIgMjkuNDU5LTI3Ljg5NGw4LjY1My0xNjIuNzE3aC0xMjUuMzU2djE5MC42MTF6IiBmaWxsPSIjOTk1MDNkIi8+PHBhdGggZD0ibTI1NiAzMy40N2MtNzIuODE4IDAtMTMyLjA2IDU5LjI0Mi0xMzIuMDYgMTMyLjA2IDAgOC4yODQgNi43MTYgMTUgMTUgMTVoMjM0LjEyMWM4LjI4NCAwIDE1LTYuNzE2IDE1LTE1IDAtNzIuODE5LTU5LjI0Mi0xMzIuMDYtMTMyLjA2MS0xMzIuMDZ6IiBmaWxsPSIjZmZkYTJkIi8+PHBhdGggZD0ibTM4OC4wNjEgMTY1LjUzYzAtNzIuODE4LTU5LjI0Mi0xMzIuMDYtMTMyLjA2MS0xMzIuMDZ2MTQ3LjA2aDExNy4wNjFjOC4yODQgMCAxNS02LjcxNiAxNS0xNXoiIGZpbGw9IiNmZGJlMDAiLz48cGF0aCBkPSJtMzgwLjM3OCAxNTAuNTNoLTI0OC43NTZjLTE2LjY0NyAwLTMwLjE5IDEzLjU0My0zMC4xOSAzMC4xOXY2LjkwMWMwIDE2LjY0NyAxMy41NDMgMzAuMTkgMzAuMTkgMzAuMTloMjQ4Ljc1NmMxNi42NDcgMCAzMC4xOS0xMy41NDMgMzAuMTktMzAuMTl2LTYuOTAxYy4wMDEtMTYuNjQ3LTEzLjU0Mi0zMC4xOS0zMC4xOS0zMC4xOXoiIGZpbGw9IiNmZGJmMDAiLz48cGF0aCBkPSJtMzgwLjM3OCAxNTAuNTNoLTEyNC4zNzh2NjcuMjgyaDEyNC4zNzhjMTYuNjQ3IDAgMzAuMTktMTMuNTQzIDMwLjE5LTMwLjE5di02LjkwMWMuMDAxLTE2LjY0OC0xMy41NDItMzAuMTkxLTMwLjE5LTMwLjE5MXoiIGZpbGw9IiNmZjg3MDAiLz48cGF0aCBkPSJtMjgxIDBoLTUwYy04LjI4NCAwLTE1IDYuNzE2LTE1IDE1djgwLjQ3MmMwIDguMjg0IDYuNzE2IDE1IDE1IDE1aDUwYzguMjg0IDAgMTUtNi43MTYgMTUtMTV2LTgwLjQ3MmMwLTguMjg0LTYuNzE2LTE1LTE1LTE1eiIgZmlsbD0iI2ZkYmUwMCIvPjxwYXRoIGQ9Im0yODEgMGgtMjV2MTEwLjQ3MmgyNWM4LjI4NCAwIDE1LTYuNzE2IDE1LTE1di04MC40NzJjMC04LjI4NC02LjcxNi0xNS0xNS0xNXoiIGZpbGw9IiNmZjg3MDAiLz48cGF0aCBkPSJtMzAwLjk2MyAzMGgtODkuOTI2Yy04LjI4NCAwLTE1LTYuNzE2LTE1LTE1czYuNzE2LTE1IDE1LTE1aDg5LjkyNmM4LjI4NCAwIDE1IDYuNzE2IDE1IDE1cy02LjcxNiAxNS0xNSAxNXoiIGZpbGw9IiNmZmRhMmQiLz48cGF0aCBkPSJtMzE1Ljk2MyAxNWMwLTguMjg0LTYuNzE2LTE1LTE1LTE1aC00NC45NjN2MzBoNDQuOTYzYzguMjg0IDAgMTUtNi43MTYgMTUtMTV6IiBmaWxsPSIjZmRiZTAwIi8+PC9nPjwvc3ZnPg==" 
-           class="shake" /></h1> </a>
+{% extends "base.html" %}
 
-        <div class="topnav-right">
-          
-          <a href="#">Home</a>
-          <a href="#"><i class="far fa-user-circle"></i> My Account</a>
-          
-          <div class="dropdown">
-              <button
-              class="btn btn-outline-secondary dropdown-toggle" id="carousel-button"
-              type="button"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              onclick="myfunction()"
-            >
-             <i class="fas fa-shopping-cart"></i> Your Cart
-              </button>
-            <div class="dropdown-menu" id="myDropdown" aria-labelledby="dropdownMenuButton1">
-              <a class="dropdown-item" href="#">MyProtein Shake Bottle</a>
-              <a class="dropdown-item" href="#">Protein Blender</a>
-              <a class="dropdown-item" href="#">Vegan Vanilla Protein</a>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-    </div>
+{% block content %}
+	<!--discount add-->
+	<div class="ad-container">
+		<div class="card mb-3">
+			<!--carousel-->
+			<div class="carousel js-flickity">
+				<div class="carousel-cell">
+					<img src="https://i2.wp.com/simple-veganista.com/wp-content/uploads/2012/08/chocolate-vegan-milkshake.jpg"
+						alt="choc shake"/>
+					<button class="btn">Shop Deal</button>
+				</div>
+				<div class="carousel-cell">
+					<img src="https://i1.wp.com/meatfreeketo.com/wp-content/uploads/dairy-free-vegan-keto-shamrock-shake.png?resize=750%2C418&ssl=1"
+						alt="green shake" />
+					<button class="btn">Shop Deal</button>
+				</div>
+				<div class="carousel-cell">
+					<img src="https://cdn.viva.org.uk/wp-content/uploads/2020/06/vegan-shake.jpg"
+						alt="strawberry shake" />
+					<button class="btn">Shop Deal</button>
+				</div>
+			</div>
 
-    <!--Discount add-->
-    <div class="ad-container">
-      <div class="card mb-3">
-        <!--Carousel-->
-        <div class="carousel js-flickity">
-         
-          <div class="carousel-cell">
-            <img src="https://i2.wp.com/simple-veganista.com/wp-content/uploads/2012/08/chocolate-vegan-milkshake.jpg" alt="choc shake" />
-            <button class="btn">Shop Deal</button>
-          </div>
-          <div class="carousel-cell">
-            <img src="https://i1.wp.com/meatfreeketo.com/wp-content/uploads/dairy-free-vegan-keto-shamrock-shake.png?resize=750%2C418&ssl=1" alt="green shake" />
-            <button class="btn">Shop Deal</button>
-          </div>
-          <div class="carousel-cell">
-            <img src="https://cdn.viva.org.uk/wp-content/uploads/2020/06/vegan-shake.jpg" alt="strawberry shake" />
-            <button class="btn">Shop Deal</button>
-           
-          </div>
-          
-          </div>
- 
-       
-        <div class="card-body">
-          <h5 class="card-title"><strong class="deal">3 FOR £10</strong> </h5>
-          <p class="card-text">
-            Flavours: <br> Maximum of 2 toppings.
-          </p>
-          <p class="card-text">
-            <small class="text-muted">Offer ends 11:59pm on 28/02/2021.</small>
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="item-container">
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col" >
-          <div class="card h-100" id="col-yellow">
-            <img src="https://s4.thcdn.com/productimg/1600/1600/12708205-2014806233469567.png" class="card-img-top" alt="Protein shake bottle"  />
-            <div class="card-body">
-              <h5 class="card-title"><a href="#">MyProtein Shake Bottle</a> </h5>
-              <p class="card-text">
-                Our shaker helps to keep you hydrated throughout the day, and the blending ball has been designed to give you a smooth shake whatever supplement you’re mixing. 
-        It’s an essential for your gym bag to stay fuelled, wherever you are.
-        *Whey protein sold seperately.
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">£9.99</small>
-            </div>
-          </div>
-        </div>
-        <div class="col" >
-          <div class="card h-100"id="col-orange">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/71vWIgpzHGL._AC_SL1500_.jpg" class="card-img-top" alt="Protein blender"  />
-            <div class="card-body">
-              <h5 class="card-title"><a href="#">Protein Blender</a> </h5>
-              <p class="card-text">
-                Have you been looking for a quick and effortless way to make your smoothies, shakes and juices on the go?
-        The Sboly Personal Blender is the answer! With a simple one-touch operation, you can now easily make your favorite drinks in as little as 10 seconds. 
-        <br>
-        Comes with TWO 20 oz Tritan portable blender cups.
-        25.6 x 22.3 x 16.2 cm; 1.72 Kilograms
-        
-        *Dishwasher Safe for Simple Cleaning.
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">£4.99</small>
-            </div>
-          </div>
-        </div>
-        <div class="col" >
-          <div class="card h-100" id="col-green">
-            <img src="https://assets.sainsburys-groceries.co.uk/gol/7938486/1/300x300.jpg" class="card-img-top" alt="vegan protein">
-            <div class="card-body">
-              <h5 class="card-title"><a href="#">Vegan Vanilla Protein - 900g</a> </h5>
-              <p class="card-text">
-                The Vegan Blend meal replacement shake for weight management. Plant based mix with sweetener, fortified with vitamins, minerals and botanicals.
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">£20.99</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr>
-     <footer class="container-fluid">
-        <div id="FooterFrame">
-        <div class="row">
-            <!-- Section of footer for external links -->
-            <div class="col-sm-6">
-                <h5>© 2021 urbanShakes</h5>
-                <ul><a class="underlined" href="https://www.thevegankindsupermarket.com/tvk-supermarket-terms-and-conditions">Terms & Conditions</ul></a>
-                <ul><a class="underlined" href="https://www.thevegankindsupermarket.com/about-us">About Us</ul></a>
-                <ul><a class="underlined" href="https://www.thevegankindsupermarket.com/contact-us">Contact Us</ul></a>
-            </div>
+			<div class="card-body">
+				<h5 class="card-title"><strong class="deal">3 FOR £10</strong> </h5>
+				<p class="card-text">
+					Flavours: <br> Maximum of 2 toppings.
+				</p>
+				<p class="card-text">
+					<small class="text-muted">Offer ends 11:59pm on 28/02/2021.</small>
+				</p>
+			</div>
+		</div>
+	</div>
 
-            <!-- Section of footer for contact us form -->
-            <div class="col-sm-6" id="form-border"> 
-              <form action="/user">
-                <h3> Sign In</h3>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Email address</label>
-                  <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autofocus="on">
-                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Password</label>
-                  <input name="password" type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">I agree to <em>urbanShakes</em> <span><a href="#">Terms and Conditions</a></span></label>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <div id='info_section'>
-                    <p></p>
-                </div>
-              </form>
-                </div>
-            </div>
-            </div>
-          
-        </div>
-    </div>
-    </div>
-    </div>
-      </footer>
-      <script>
-        function myfunction() {
-          document.getElementById("myDropdown").classList.toggle("show");
-}
-      </script>
-  </body>
-</html>
+	<div class="item-container">
+		<div class="row row-cols-1 row-cols-md-3 g-4">
+			<div class="col">
+				<div class="card h-100" id="col-yellow">
+					<img src="https://s4.thcdn.com/productimg/1600/1600/12708205-2014806233469567.png"
+						class="card-img-top" alt="Protein shake bottle" />
+					<div class="card-body">
+						<h5 class="card-title">
+							<a href="#">MyProtein Shake Bottle</a>
+						</h5>
+						<p class="card-text">
+							Our shaker helps to keep you hydrated throughout the day, and the blending ball has been
+							designed to give you a smooth shake whatever supplement you’re mixing.
+							It’s an essential for your gym bag to stay fuelled, wherever you are.
+							*Whey protein sold seperately.
+						</p>
+					</div>
+					<div class="card-footer">
+						<small class="text-muted">£9.99</small>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card h-100" id="col-orange">
+					<img src="https://images-na.ssl-images-amazon.com/images/I/71vWIgpzHGL._AC_SL1500_.jpg"
+						class="card-img-top" alt="Protein blender"/>
+					<div class="card-body">
+						<h5 class="card-title">
+							<a href="#">Protein Blender</a>
+						</h5>
+						<p class="card-text">
+							Have you been looking for a quick and effortless way to make your smoothies, shakes and
+							juices on the go?
+							The Sboly Personal Blender is the answer! With a simple one-touch operation, you can now
+							easily make your favorite drinks in as little as 10 seconds.
+							<br>
+							Comes with TWO 20 oz Tritan portable blender cups.
+							25.6 x 22.3 x 16.2 cm; 1.72 Kilograms
+
+							*Dishwasher Safe for Simple Cleaning.
+						</p>
+					</div>
+					<div class="card-footer">
+						<small class="text-muted">£4.99</small>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card h-100" id="col-green">
+					<img src="https://assets.sainsburys-groceries.co.uk/gol/7938486/1/300x300.jpg" class="card-img-top"
+						alt="vegan protein">
+					<div class="card-body">
+						<h5 class="card-title">
+							<a href="#">Vegan Vanilla Protein - 900g</a>
+						</h5>
+						<p class="card-text">
+							The Vegan Blend meal replacement shake for weight management. Plant based mix with
+							sweetener, fortified with vitamins, minerals and botanicals.
+						</p>
+					</div>
+					<div class="card-footer">
+						<small class="text-muted">£20.99</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+{% endblock %}
